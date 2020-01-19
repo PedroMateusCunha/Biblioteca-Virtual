@@ -1,9 +1,9 @@
 package br.com.frajola.exemplares;
 
 public class Livro extends Exemplar{
-	String editora;
-	String isbn;
-	Integer contadorLivro = 1;
+	private String editora;
+	private String isbn;
+	private Integer contadorLivro = 0;
 	
 	public Livro(String titulo, String autor, Integer ano, String editora, String isbn) {
 		super(titulo, autor, ano);
@@ -15,6 +15,22 @@ public class Livro extends Exemplar{
 	@Override
 	public Integer contarExemplar() {
 		return this.contadorLivro;
+	}
+
+	public String getEditora() {
+		return editora;
+	}
+
+	public void setEditora(String editora) {
+		this.editora = editora;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 	
 	

@@ -1,48 +1,41 @@
 package br.com.frajola.exemplares;
 
-import java.util.ArrayList;
-
 public abstract class Exemplar {
-	String titulo;
-	String autor;
-	Integer ano;
-	ArrayList<Exemplar> listaDeExemplares;
+	private String titulo;
+	private String autor;
+	private Integer ano;
 	
 	public Exemplar(String titulo, String autor, Integer ano) {
 		this.titulo = titulo;
 		this.autor = autor;
 		this.ano = ano;
-		listaDeExemplares = new ArrayList<Exemplar>();
 	}
 	
 	public abstract Integer contarExemplar();
 
-	public ArrayList<Exemplar> getListaDeExemplares() {
-		return listaDeExemplares;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setListaDeExemplares(ArrayList<Exemplar> listaDeExemplares) {
-		this.listaDeExemplares = listaDeExemplares;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getAutor() {
+		return autor;
+	}
+
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+
+	public Integer getAno() {
+		return ano;
+	}
+
+	public void setAno(Integer ano) {
+		this.ano = ano;
 	}
 	
-	public void adicionarExemplar(Exemplar e) {
-		listaDeExemplares.add(e);
-	}
-	
-	public void removerExemplar(Exemplar e) {
-		if (listaDeExemplares.contains(e)) {
-			listaDeExemplares.remove(e);			
-		}
-	}
-	
-	public void atualizarExemplar(Exemplar e) {
-		//TODO Fazer atualização do exemplar
-	}
-	
-	public void listarExemplares() {
-		for (Exemplar exemplar : listaDeExemplares) {
-			System.out.println(exemplar);
-		}
-	}
 	
 }

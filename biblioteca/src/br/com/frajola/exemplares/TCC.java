@@ -1,9 +1,9 @@
 package br.com.frajola.exemplares;
 
 public class TCC extends Exemplar {
-	String orientador;
-	String areaDeConhecimento;
-	Integer contadorTCC = 1;
+	private String orientador;
+	private String areaDeConhecimento;
+	private Integer contadorTCC = 0;
 
 	public TCC(String titulo, String autor, Integer ano, Integer exemplar, String orientador,
 			String areaDeConhecimento) {
@@ -17,5 +17,31 @@ public class TCC extends Exemplar {
 	public Integer contarExemplar() {
 		return this.contadorTCC;
 	}
+
+	public String getOrientador() {
+		return orientador;
+	}
+
+	public void setOrientador(String orientador) {
+		this.orientador = orientador;
+	}
+
+	public Integer getContadorTCC() {
+		return contadorTCC;
+	}
+
+	public void setContadorTCC(Integer contadorTCC) {
+		this.contadorTCC = contadorTCC;
+	}
+
+	public String getAreaDeConhecimento() {
+		return areaDeConhecimento;
+	}
+
+	public void setAreaDeConhecimento(String areaDeConhecimento) {
+		this.areaDeConhecimento = areaDeConhecimento;
+	}
+	
+	
 
 }

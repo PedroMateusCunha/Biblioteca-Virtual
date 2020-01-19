@@ -1,9 +1,9 @@
 package br.com.frajola.exemplares;
 
 public class Revista extends Exemplar {
-	String tipo;
-	String editora;
-	static Integer contadorRevista = 0;
+	private String tipo;
+	private String editora;
+	private static Integer contadorRevista = 0;
 
 	public Revista(String titulo, String autor, Integer ano, String tipo,
 			String editora) {
@@ -17,6 +17,23 @@ public class Revista extends Exemplar {
 	public Integer contarExemplar() {
 		return Revista.contadorRevista;
 	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getEditora() {
+		return editora;
+	}
+
+	public void setEditora(String editora) {
+		this.editora = editora;
+	}
 	
 
+	
 }
