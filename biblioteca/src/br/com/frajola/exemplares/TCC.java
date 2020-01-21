@@ -5,7 +5,7 @@ public class TCC extends Exemplar {
 	private String areaDeConhecimento;
 	private Integer contadorTCC = 0;
 
-	public TCC(String titulo, String autor, Integer ano, Integer exemplar, String orientador,
+	public TCC(String titulo, String autor, Integer ano, String orientador,
 			String areaDeConhecimento) {
 		super(titulo, autor, ano);
 		this.orientador = orientador;
