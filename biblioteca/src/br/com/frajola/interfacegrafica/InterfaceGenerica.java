@@ -13,7 +13,7 @@ public abstract class InterfaceGenerica extends JFrame {
 		
 		// #Criação do Frame Inicial#//
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setPreferredSize(new Dimension(600, 500));
+		setPreferredSize(new Dimension(300, 200));
 		setLocationRelativeTo(null);
 	}
 	

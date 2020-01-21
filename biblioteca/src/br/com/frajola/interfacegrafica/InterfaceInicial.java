@@ -8,18 +8,28 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import br.com.frajola.biblioteca.Biblioteca;
 
 public class InterfaceInicial extends InterfaceGenerica {
 
-	private JPanel pnlInicial;
+	private JPanel pnlInicial, pnlConsulta;
 	private JButton btnAdicionar, btnRemover, btnEditar, btnConsultar;
 	private JLabel lblTitulo, lblAutor, lblAno;
 	private JComboBox<String> cbxOpcoesExemplares;
 	private static final long serialVersionUID = 1L;
-
+	private DefaultTableModel dflTabela;
+	private InterfaceAdicionar interfaceAdicionar;
+	private JTable tblTabela;
+	
 	public InterfaceInicial() {
 
 		pnlInicial = new JPanel();
+		pnlConsulta = new JPanel();
+		interfaceAdicionar = new InterfaceAdicionar();
 
 		// #Adições do Painel Inicial#//
 		btnAdicionar = new JButton("Adicionar");
@@ -37,7 +47,6 @@ public class InterfaceInicial extends InterfaceGenerica {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if (arg0.getSource() == btnAdicionar) {
-					InterfaceAdicionar interfaceAdicionar = new InterfaceAdicionar();
 					trocarPainel(interfaceAdicionar.getPnlAdicionar());
 				}
 				
@@ -66,8 +75,14 @@ public class InterfaceInicial extends InterfaceGenerica {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				
+				dflTabela.insertRow(0, new Object[] {interfaceAdicionar.getTxtTitulo().getText(),
+						interfaceAdicionar.getTxtAutor().getText(), interfaceAdicionar.getTxtAno().getText(),
+						interfaceAdicionar.getTxtEditora().getText(), interfaceAdicionar.getTxtIsbn().getText()
+				});
+				tblTabela = new JTable(dflTabela);
+				getContentPane().add(new JScrollPane(tblTabela));
+				pnlConsulta.add(tblTabela);
+				trocarPainel(pnlConsulta);
 			}
 		});
 
@@ -75,15 +90,19 @@ public class InterfaceInicial extends InterfaceGenerica {
 		pnlInicial.add(btnRemover);
 		pnlInicial.add(btnEditar);
 		pnlInicial.add(btnConsultar);
+		
+		dflTabela = new DefaultTableModel();
+		dflTabela.addColumn("Titulo");
+		dflTabela.addColumn("Autor");
+		dflTabela.addColumn("Ano");
+		dflTabela.addColumn("Editora");
+		dflTabela.addColumn("ISBN");
 
 		getContentPane().add(pnlInicial);
 		pack();
 		setVisible(true);
 	}
 
-	public static void main(String[] args) {
-		new InterfaceInicial();
-
-	}
+	
 
 }
