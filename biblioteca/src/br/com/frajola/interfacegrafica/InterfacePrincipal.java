@@ -44,7 +44,7 @@ public class InterfacePrincipal extends JFrame {
 
 		// #Criação do Frame Inicial#//
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setPreferredSize(new Dimension(500, 300));
+		setPreferredSize(new Dimension(500, 500));
 		// setLocationRelativeTo(null);
 		setTitle("Biblioteca");
 		// setLayout(layout);
@@ -115,19 +115,15 @@ public class InterfacePrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if (arg0.getSource() == btnAdicionar) {
 					trocarPainel(pnlAdicionar);
-				}
+					//biblioteca.listarExemplares();
 			}
 		});
 		btnRemover.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if (arg0.getSource() == btnRemover) {
 					trocarPainel(pnlRemover);
-				}
-
 			}
 		});
 		btnEditar.addActionListener(new ActionListener() {
@@ -264,6 +260,7 @@ public class InterfacePrincipal extends JFrame {
 		// #Visualização do Frame#//
 		getContentPane().add(pnlInicial);
 		pack();
+		setLocationRelativeTo(null);
 		setVisible(true);
 
 	}
@@ -285,8 +282,8 @@ public class InterfacePrincipal extends JFrame {
 	public void trocarPainel(JPanel pnlTroca) {
 		getContentPane().removeAll();
 		getContentPane().add(pnlTroca);
-		revalidate();
-		repaint();
+		pnlTroca.revalidate();
+		pnlTroca.repaint();
 	}
 
 }
