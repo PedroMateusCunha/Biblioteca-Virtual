@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import br.com.frajola.biblioteca.Biblioteca;
+import br.com.frajola.exemplares.Exemplar;
 import br.com.frajola.exemplares.Livro;
 import br.com.frajola.exemplares.Revista;
 import br.com.frajola.exemplares.TCC;
@@ -107,8 +108,7 @@ public class InterfacePrincipal extends JFrame {
 		dflTabela.addColumn("Titulo");
 		dflTabela.addColumn("Autor");
 		dflTabela.addColumn("Ano");
-		dflTabela.addColumn("Editora");
-		dflTabela.addColumn("ISBN");
+		dflTabela.addColumn("Tipo");
 
 		// #Implementacao dos ActionListener do Painel Inicial#//
 		btnAdicionar.addActionListener(new ActionListener() {
@@ -144,7 +144,8 @@ public class InterfacePrincipal extends JFrame {
 							lblEditora.getText(), lblIsbn.getText() });
 					tblTabela = new JTable(dflTabela);
 					getContentPane().add(new JScrollPane(tblTabela));
-					adicionarComponente(pnlConsulta, tblTabela, gbcGenerico, 1, 1, 0, 0);
+					adicionarComponente(pnlConsulta, tblTabela, 1, 1, 0, 0);
+					adicionarComponente(pnlConsulta, btnVoltar, 1, 1, 0, 2);
 					trocarPainel(pnlConsulta);
 				}
 			}
@@ -160,57 +161,56 @@ public class InterfacePrincipal extends JFrame {
 
 				switch (tipos) {
 				case "Livro":
-					System.out.println("LIVRO");
-					adicionarComponente(pnlAdicionar, lblTitulo, gbcGenerico, 1, 1, 1, 1);
-					adicionarComponente(pnlAdicionar, txtTitulo, gbcGenerico, 1, 1, 2, 1);
-					adicionarComponente(pnlAdicionar, lblAutor, gbcGenerico, 1, 1, 1, 2);
-					adicionarComponente(pnlAdicionar, txtAutor, gbcGenerico, 1, 1, 2, 2);
-					adicionarComponente(pnlAdicionar, lblAno, gbcGenerico, 1, 1, 1, 3);
-					adicionarComponente(pnlAdicionar, txtAno, gbcGenerico, 1, 1, 2, 3);
-					adicionarComponente(pnlAdicionar, lblEditora, gbcGenerico, 1, 1, 1, 4);
-					adicionarComponente(pnlAdicionar, txtEditora, gbcGenerico, 1, 1, 2, 4);
-					adicionarComponente(pnlAdicionar, lblIsbn, gbcGenerico, 1, 1, 1, 5);
-					adicionarComponente(pnlAdicionar, txtIsbn, gbcGenerico, 1, 1, 2, 5);
+					atualizarPainel(pnlAdicionar);
+					adicionarComponente(pnlAdicionar, lblTitulo, 1, 1, 1, 1);
+					adicionarComponente(pnlAdicionar, txtTitulo, 1, 1, 2, 1);
+					adicionarComponente(pnlAdicionar, lblAutor, 1, 1, 1, 2);
+					adicionarComponente(pnlAdicionar, txtAutor, 1, 1, 2, 2);
+					adicionarComponente(pnlAdicionar, lblAno, 1, 1, 1, 3);
+					adicionarComponente(pnlAdicionar, txtAno, 1, 1, 2, 3);
+					adicionarComponente(pnlAdicionar, lblEditora, 1, 1, 1, 4);
+					adicionarComponente(pnlAdicionar, txtEditora, 1, 1, 2, 4);
+					adicionarComponente(pnlAdicionar, lblIsbn, 1, 1, 1, 5);
+					adicionarComponente(pnlAdicionar, txtIsbn, 1, 1, 2, 5);
 					break;
 				case "TCC":
-					adicionarComponente(pnlAdicionar, lblTitulo, gbcGenerico, 1, 1, 1, 1);
-					adicionarComponente(pnlAdicionar, txtTitulo, gbcGenerico, 1, 1, 2, 1);
-					adicionarComponente(pnlAdicionar, lblAutor, gbcGenerico, 1, 1, 1, 2);
-					adicionarComponente(pnlAdicionar, txtAutor, gbcGenerico, 1, 1, 2, 2);
-					adicionarComponente(pnlAdicionar, lblAno, gbcGenerico, 1, 1, 1, 3);
-					adicionarComponente(pnlAdicionar, txtAno, gbcGenerico, 1, 1, 2, 3);
-					adicionarComponente(pnlAdicionar, lblEditora, gbcGenerico, 1, 1, 1, 4);
-					adicionarComponente(pnlAdicionar, txtEditora, gbcGenerico, 1, 1, 2, 4);
-					adicionarComponente(pnlAdicionar, lblOrientador, gbcGenerico, 1, 1, 1, 5);
-					adicionarComponente(pnlAdicionar, txtOrientador, gbcGenerico, 1, 1, 2, 5);
-					adicionarComponente(pnlAdicionar, lblAreaDeConhecimento, gbcGenerico, 1, 1, 1, 6);
-					adicionarComponente(pnlAdicionar, txtAreaDeConhecimento, gbcGenerico, 1, 1, 2, 6);
-					System.out.println("TCC");
+					atualizarPainel(pnlAdicionar);
+					adicionarComponente(pnlAdicionar, lblTitulo, 1, 1, 1, 1);
+					adicionarComponente(pnlAdicionar, txtTitulo, 1, 1, 2, 1);
+					adicionarComponente(pnlAdicionar, lblAutor, 1, 1, 1, 2);
+					adicionarComponente(pnlAdicionar, txtAutor, 1, 1, 2, 2);
+					adicionarComponente(pnlAdicionar, lblAno, 1, 1, 1, 3);
+					adicionarComponente(pnlAdicionar, txtAno, 1, 1, 2, 3);
+					adicionarComponente(pnlAdicionar, lblEditora, 1, 1, 1, 4);
+					adicionarComponente(pnlAdicionar, txtEditora, 1, 1, 2, 4);
+					adicionarComponente(pnlAdicionar, lblOrientador, 1, 1, 1, 5);
+					adicionarComponente(pnlAdicionar, txtOrientador, 1, 1, 2, 5);
+					adicionarComponente(pnlAdicionar, lblAreaDeConhecimento, 1, 1, 1, 6);
+					adicionarComponente(pnlAdicionar, txtAreaDeConhecimento, 1, 1, 2, 6);
 					break;
 				case "Revista":
-					adicionarComponente(pnlAdicionar, lblTitulo, gbcGenerico, 1, 1, 1, 1);
-					adicionarComponente(pnlAdicionar, txtTitulo, gbcGenerico, 1, 1, 2, 1);
-					adicionarComponente(pnlAdicionar, lblAutor, gbcGenerico, 1, 1, 1, 2);
-					adicionarComponente(pnlAdicionar, txtAutor, gbcGenerico, 1, 1, 2, 2);
-					adicionarComponente(pnlAdicionar, lblAno, gbcGenerico, 1, 1, 1, 3);
-					adicionarComponente(pnlAdicionar, txtAno, gbcGenerico, 1, 1, 2, 3);
-					adicionarComponente(pnlAdicionar, lblEditora, gbcGenerico, 1, 1, 1, 4);
-					adicionarComponente(pnlAdicionar, txtEditora, gbcGenerico, 1, 1, 2, 4);
-					adicionarComponente(pnlAdicionar, lblIsbn, gbcGenerico, 1, 1, 1, 5);
-					adicionarComponente(pnlAdicionar, txtIsbn, gbcGenerico, 1, 1, 2, 5);
-					adicionarComponente(pnlAdicionar, lblTipo, gbcGenerico, 1, 1, 1, 6);
-					adicionarComponente(pnlAdicionar, txtTipo, gbcGenerico, 1, 1, 2, 6);
-					System.out.println("REVISTA");
+					atualizarPainel(pnlAdicionar);
+					adicionarComponente(pnlAdicionar, lblTitulo, 1, 1, 1, 1);
+					adicionarComponente(pnlAdicionar, txtTitulo, 1, 1, 2, 1);
+					adicionarComponente(pnlAdicionar, lblAutor, 1, 1, 1, 2);
+					adicionarComponente(pnlAdicionar, txtAutor, 1, 1, 2, 2);
+					adicionarComponente(pnlAdicionar, lblAno, 1, 1, 1, 3);
+					adicionarComponente(pnlAdicionar, txtAno, 1, 1, 2, 3);
+					adicionarComponente(pnlAdicionar, lblEditora, 1, 1, 1, 4);
+					adicionarComponente(pnlAdicionar, txtEditora, 1, 1, 2, 4);
+					adicionarComponente(pnlAdicionar, lblIsbn, 1, 1, 1, 5);
+					adicionarComponente(pnlAdicionar, txtIsbn, 1, 1, 2, 5);
+					adicionarComponente(pnlAdicionar, lblTipo, 1, 1, 1, 6);
+					adicionarComponente(pnlAdicionar, txtTipo, 1, 1, 2, 6);
 					break;
 				default:
+					atualizarPainel(pnlAdicionar);
 					System.out.println("DEFAULT");
 					break;
 				}
 			}
 		});
-		gbcGenerico.fill = GridBagConstraints.HORIZONTAL;
-		adicionarComponente(pnlAdicionar, btnAdicionarExemplar, gbcGenerico, 2, 1, 1, 7);
-		adicionarComponente(pnlAdicionar, btnVoltar, gbcGenerico, 2, 1, 1, 8);
+		
 		btnAdicionarExemplar.addActionListener(new ActionListener() {
 
 			@Override
@@ -218,13 +218,16 @@ public class InterfacePrincipal extends JFrame {
 				if (cbxOpcoesExemplares.getSelectedItem() == "Livro") {
 					biblioteca.adicionarExemplar(new Livro(txtTitulo.getText(), txtAutor.getText(),
 							Integer.valueOf(txtAno.getText()), txtEditora.getText(), txtIsbn.getText()));
+					dflTabela.addRow(new Object[]{txtTitulo.getText(), txtAutor.getText(), txtAno.getText(), "Livro"});
 				} else if (cbxOpcoesExemplares.getSelectedItem() == "TCC") {
 					biblioteca.adicionarExemplar(
 							new TCC(txtTitulo.getText(), txtAutor.getText(), Integer.valueOf(txtAno.getText()),
 									txtOrientador.getText(), txtAreaDeConhecimento.getText()));
+					dflTabela.addRow(new Object[]{txtTitulo.getText(), txtAutor.getText(), txtAno.getText(), "TCC"});
 				} else if (cbxOpcoesExemplares.getSelectedItem() == "Revista") {
 					biblioteca.adicionarExemplar(new Revista(txtTitulo.getText(), txtAutor.getText(),
 							Integer.valueOf(txtAno.getText()), txtTipo.getText(), txtEditora.getText()));
+					dflTabela.addRow(new Object[]{txtTitulo.getText(), txtAutor.getText(), txtAno.getText(), "Revista"});
 				}
 
 			}
@@ -238,22 +241,24 @@ public class InterfacePrincipal extends JFrame {
 
 			}
 		});
+		
+		adicionarComponente(pnlAdicionar, btnAdicionarExemplar, 2, 1, 1, 7);
+		adicionarComponente(pnlAdicionar, btnVoltar, 2, 1, 1, 8);
 
 		//#Adicao dos Componentes do Painel Remover#//
-		adicionarComponente(pnlRemover, lblTitulo, gbcGenerico, 1, 1, 0, 0);
-		adicionarComponente(pnlRemover, txtTitulo, gbcGenerico, 1, 1, 1, 0);
+		adicionarComponente(pnlRemover, lblTitulo, 1, 1, 0, 0);
+		adicionarComponente(pnlRemover, txtTitulo, 5, 1, 1, 0);
 		//adicionarComponente(pnlRemover, btnRemover, gbcGenerico, 1, 1, 0, 1);
 		//adicionarComponente(pnlRemover, btnVoltar, gbcGenerico, 2, 1, 0, 2);
 		
 		// #Adicao dos Componentes do Painel Adicionar#//
-		adicionarComponente(pnlAdicionar, cbxOpcoesExemplares, gbcGenerico, 3, 1, 0, 0);
-		gbcGenerico.fill = GridBagConstraints.HORIZONTAL;
+		adicionarComponente(pnlAdicionar, cbxOpcoesExemplares, 3, 1, 0, 0);
 
 		// #Adição dos Botoes com GridBagLayout#//
-		adicionarComponente(pnlInicial, btnAdicionar, gbcGenerico, 1, 1, 0, 0);
-		adicionarComponente(pnlInicial, btnRemover, gbcGenerico, 1, 1, 1, 0);
-		adicionarComponente(pnlInicial, btnEditar, gbcGenerico, 1, 1, 2, 0);
-		adicionarComponente(pnlInicial, btnConsultar, gbcGenerico, 1, 1, 3, 0);
+		adicionarComponente(pnlInicial, btnAdicionar, 1, 1, 0, 0);
+		adicionarComponente(pnlInicial, btnRemover, 1, 1, 1, 0);
+		adicionarComponente(pnlInicial, btnEditar, 1, 1, 2, 0);
+		adicionarComponente(pnlInicial, btnConsultar, 1, 1, 3, 0);
 		
 		
 
@@ -265,25 +270,30 @@ public class InterfacePrincipal extends JFrame {
 
 	}
 
-	// #Metodo Main#//r
+	// #Metodo Main#//
 	public static void main(String[] args) {
 		new InterfacePrincipal();
 	}
 
-	public void adicionarComponente(JPanel painel, Component componente, GridBagConstraints gbc, int largura,
+	public void adicionarComponente(JPanel painel, Component componente, int largura,
 			int altura, int coluna, int linha) {
-		gbc.gridwidth = largura;
-		gbc.gridheight = altura;
-		gbc.gridx = coluna;
-		gbc.gridy = linha;
-		painel.add(componente, gbc);
+		this.gbcGenerico.gridwidth = largura;
+		this.gbcGenerico.gridheight = altura;
+		this.gbcGenerico.gridx = coluna;
+		this.gbcGenerico.gridy = linha;
+		gbcGenerico.fill = GridBagConstraints.HORIZONTAL;
+		painel.add(componente, this.gbcGenerico);
 	}
 
+	public void atualizarPainel(JPanel pnlTroca) {
+		pnlTroca.revalidate();
+		pnlTroca.repaint();
+	}
+	
 	public void trocarPainel(JPanel pnlTroca) {
 		getContentPane().removeAll();
 		getContentPane().add(pnlTroca);
-		pnlTroca.revalidate();
-		pnlTroca.repaint();
+		atualizarPainel(pnlTroca);
 	}
 
 }

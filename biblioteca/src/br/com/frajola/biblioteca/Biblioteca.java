@@ -1,21 +1,22 @@
 package br.com.frajola.biblioteca;
 
-import java.util.ArrayList;
+import java.util.Vector;
+
 import br.com.frajola.exemplares.Exemplar;
 import br.com.frajola.exemplares.Livro;;
 
 public class Biblioteca {
-	private ArrayList<Exemplar> listaDeExemplares;
+	private Vector<Exemplar> listaDeExemplares;
 
 	public Biblioteca() {
-		listaDeExemplares = new ArrayList<Exemplar>();
+		listaDeExemplares = new Vector<Exemplar>();
 	}
 
-	public ArrayList<Exemplar> getListaDeExemplares() {
+	public Vector<?> getListaDeExemplares() {
 		return listaDeExemplares;
 	}
 
-	public void setListaDeExemplares(ArrayList<Exemplar> listaDeExemplares) {
+	public void setListaDeExemplares(Vector<Exemplar> listaDeExemplares) {
 		this.listaDeExemplares = listaDeExemplares;
 	}
 
