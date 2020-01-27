@@ -27,7 +27,7 @@ public class Biblioteca {
 	public void removerExemplar(Exemplar e) {
 		if (listaDeExemplares.contains(e)) {
 			listaDeExemplares.remove(e);
-		} // TODO lançar exeção
+		}
 	}
 
 	public void atualizarExemplar(Exemplar e) {
